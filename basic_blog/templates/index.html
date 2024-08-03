@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <form class="mb-4" method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.content(class="form-control form-control-lg", placeholder="What's on your mind?") }}
+        </div>
+    </form>
+
+    {% for post in posts %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="media">
+                    <img src="https://robohash.org/{{ loop.index }}?set=set2" class="mr-3 rounded-circle" width="50" height="50">
+                    <div class="media-body">
+                        <h5 class="mt-0">Anonymous</h5>
+                        {{ post }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
